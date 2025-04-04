@@ -39,6 +39,7 @@ and put it in <div id="results">
 
 include("src/functions.php");
 $db=dbConnect();
+$hoods=getFiveHoods($db);
 
 
 ?>
@@ -77,8 +78,8 @@ $db=dbConnect();
             <div class="col-6">
 
             <?php
-
-            foreach($neighborhoods as $n){
+            //var_dump($hoods);
+            foreach($hoods as $n){
               $id=$n["id"];
               $hood=$n["neighborhood"];
 

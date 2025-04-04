@@ -37,7 +37,7 @@ function getTwentyListings($db){
 
 /* query with one SQL argument */
 function getListingsBelowPrice($db, $price){
-    echo $num;
+   // echo $num;
     try {
         $stmt = $db->prepare("select * from listings where price < ? order by price desc limit 20");   
         $data=array($price); //create an array of dynamic arguments, in the order they appear in the query
@@ -94,21 +94,24 @@ $db=dbConnect();
 // get listings from neighborhood (given id) and max price (given price)
 $neighborhoodId=22; //Eastmoreland
 $price=100;
-//$rows=getListingsByNeighborhoodIdAndMaxPrice($db, $neighborhoodId, $price);
+$rows=getListingsByNeighborhoodIdAndMaxPrice($db,  $price, $neighborhoodId);
         /** see the resulting array **/
-/*        
-var_dump($rows);
+       
+//var_dump($rows);
 
  //loop through the rows: 
+
+ $html="";
+
 foreach ($rows as $row){
     $id=$row["id"];
     $name=$row["name"];
     $price=$row["price"];
 
-    echo "<p>id: $id, name: $name, price: $price</p>";
+    $html.= "<p>id: $id, name: $name, price: $price</p>";
 }
-*/
 
+echo $html;
 ?>
     </code>
 </pre>
